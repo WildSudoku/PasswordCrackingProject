@@ -45,11 +45,9 @@ namespace PasswordCrackerCentralized.util
         public static List<UserInfo> ReadPasswordFile(String filename)
         {
             List<UserInfo> result = new List<UserInfo>();
-
             FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             using (StreamReader sr = new StreamReader(fs))
             {
-
                 while (!sr.EndOfStream)
                 {
                     String line = sr.ReadLine();

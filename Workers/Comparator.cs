@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using PasswordCrackerCentralized.model;
+using PasswordCrackerCentralized.util;
+
+namespace PasswordCrackerCentralized
+{
+
+    class Comparator
+    {
+        private static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
+        {
+            //if (secondArray == null)
+            //{
+            //    throw new ArgumentNullException("firstArray");
+            //}
+            //if (secondArray == null)
+            //{
+            //    throw new ArgumentNullException("secondArray");
+            //}
+            if (firstArray.Count != secondArray.Count)
+            {
+                return false;
+            }
+            for (int i = 0; i < firstArray.Count; i++)
+            {
+                if (firstArray[i] != secondArray[i])
+                    return false;
+            }
+            return true;
+        }
+        private IEnumerable<UserInfoClearText> CheckSingleWord(IEnumerable<UserInfo> userInfos, byte[] possiblePassword)
+        {
+            char[] charArray = possiblePassword.ToCharArray();
+            byte[] passwordAsBytes = Array.ConvertAll(charArray, PasswordFileHandler.GetConverter());
+            byte[] encryptedPassword = _messageDigest.ComputeHash(passwordAsBytes);
+            //string encryptedPasswordBase64 = System.Convert.ToBase64String(encryptedPassword);
+
+            List<UserInfoClearText> results = new List<UserInfoClearText>();
+            foreach (UserInfo userInfo in userInfos)
+            {
+                if (CompareBytes(userInfo.EntryptedPassword, encryptedPassword))
+                {
+                    results.Add(new UserInfoClearText(userInfo.Username, possiblePassword));
+                    Console.WriteLine(userInfo.Username + " " + possiblePassword);
+                }
+            }
+            return results;
+        }
+    }
+}
