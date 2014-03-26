@@ -16,8 +16,14 @@ namespace PasswordCrackerCentralized
     {
         private BlockingCollection<string> Dictionary;
         private BlockingCollection<UserInfo> UserAccounts;
-        private long loadedWords;
-
+        private BlockingCollection<Dictionary<string, string>> PossiblePasswords;
+        private long LoadedWords;
+        public Cracker()
+        {
+            Dictionary = new BlockingCollection<string>();
+            UserAccounts = new BlockingCollection<UserInfo>();
+            PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
+        }
         private void ReadDictionary(string dictionaryFileName, string passwordsFileName)
         {
             foreach (UserInfo user in PasswordFileHandler.ReadPasswordFile(passwordsFileName))
@@ -34,5 +40,7 @@ namespace PasswordCrackerCentralized
                     }
                 }
         }
+
+
     }
 }

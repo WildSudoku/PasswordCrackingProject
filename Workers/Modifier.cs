@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace PasswordCrackerCentralized
 {
     class Modifier
     {
-        private List<String> Dictionary;
+        private BlockingCollection<string> Dictionary;
 
-        public Modifier(List<String> _dictionary)
+        public Modifier(BlockingCollection<string> _dictionary)
         {
             if (_dictionary == null) throw new ArgumentNullException("Dictionary");
             Dictionary = _dictionary;

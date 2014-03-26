@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace PasswordCrackerCentralized
 
     class Comparator
     {
+        private BlockingCollection<Dictionary<string, string>> possiblePassEncrypted;
+        private List<UserInfo> userAccounts;
+ 
         private static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
         {
             //if (secondArray == null)
