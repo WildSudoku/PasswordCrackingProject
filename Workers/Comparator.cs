@@ -38,21 +38,22 @@ namespace PasswordCrackerCentralized
         }
         private IEnumerable<UserInfoClearText> CheckSingleWord(IEnumerable<UserInfo> userInfos, byte[] possiblePassword)
         {
-            char[] charArray = possiblePassword.ToCharArray();
-            byte[] passwordAsBytes = Array.ConvertAll(charArray, PasswordFileHandler.GetConverter());
-            byte[] encryptedPassword = _messageDigest.ComputeHash(passwordAsBytes);
-            //string encryptedPasswordBase64 = System.Convert.ToBase64String(encryptedPassword);
+            //char[] charArray = possiblePassword.toChar();
+            //byte[] passwordAsBytes = Array.ConvertAll(charArray, PasswordFileHandler.GetConverter());
+            //byte[] encryptedPassword = _messageDigest.ComputeHash(passwordAsBytes);
+            ////string encryptedPasswordBase64 = System.Convert.ToBase64String(encryptedPassword);
 
-            List<UserInfoClearText> results = new List<UserInfoClearText>();
-            foreach (UserInfo userInfo in userInfos)
-            {
-                if (CompareBytes(userInfo.EntryptedPassword, encryptedPassword))
-                {
-                    results.Add(new UserInfoClearText(userInfo.Username, possiblePassword));
-                    Console.WriteLine(userInfo.Username + " " + possiblePassword);
-                }
-            }
-            return results;
+            //List<UserInfoClearText> results = new List<UserInfoClearText>();
+            //foreach (UserInfo userInfo in userInfos)
+            //{
+            //    if (CompareBytes(userInfo.EntryptedPassword, encryptedPassword))
+            //    {
+            //        results.Add(new UserInfoClearText(userInfo.Username, possiblePassword));
+            //        Console.WriteLine(userInfo.Username + " " + possiblePassword);
+            //    }
+            //}
+            //return results;
+            return null;
         }
     }
 }
