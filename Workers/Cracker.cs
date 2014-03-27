@@ -30,23 +30,9 @@ namespace PasswordCrackerCentralized
             _Dictionary = new BlockingCollection<string>();
             UserAccounts = new BlockingCollection<UserInfo>();
             PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
-            LoadDataFromFiles(dictionaryFile,passwordFile);
+            new DictionaryReader(_Dictionary,dictionaryFile);
         }
 
-        private void LoadDataFromFiles(string dictionaryFileName, string passwordsFileName)
-        {
-            foreach (UserInfo user in PasswordFileHandler.ReadPasswordFile(passwordsFileName))
-            {
-                UserAccounts.Add(user);
-            }
-            using (FileStream fs = new FileStream(dictionaryFileName, FileMode.Open, FileAccess.Read))
-                using (StreamReader dictionary = new StreamReader(fs))
-                {
-                    while (!dictionary.EndOfStream)
-                    {
-                        Dictionary.Add(dictionary.ReadLine());
-                    }
-                }
-        }
+
     }
 }
