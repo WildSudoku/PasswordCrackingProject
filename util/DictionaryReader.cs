@@ -9,7 +9,7 @@ using PasswordCrackerCentralized.model;
 
 namespace PasswordCrackerCentralized.util
 {
-    class DictionaryReader
+    public class DictionaryReader
     {
         public DictionaryReader(BlockingCollection<string> Dictionary,string dictionaryFileName)
         {

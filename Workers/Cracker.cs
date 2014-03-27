@@ -30,6 +30,7 @@ namespace PasswordCrackerCentralized
             _Dictionary = new BlockingCollection<string>();
             UserAccounts = new BlockingCollection<UserInfo>();
             PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
+            PasswordFileHandler.ReadPasswordFile(passwordFile);
             new DictionaryReader(_Dictionary,dictionaryFile);
         }
 
