@@ -20,19 +20,16 @@ namespace PasswordCrackerCentralized
             get { return _Dictionary; }
             set { _Dictionary = value; }
         }
-    
         private BlockingCollection<UserInfo> UserAccounts;
-        private BlockingCollection<Dictionary<string, string>> PossiblePasswords;
+        private BlockingCollection<Dictionary<string, byte[]>> PossiblePasswords;
 
         public Cracker(string dictionaryFile, string passwordFile)
         {
             _Dictionary = new BlockingCollection<string>();
             UserAccounts = new BlockingCollection<UserInfo>();
-            PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
+            PossiblePasswords = new BlockingCollection<Dictionary<string, byte[]>>();
             PasswordFileHandler.ReadPasswordFile(passwordFile);
             new DictionaryReader(_Dictionary,dictionaryFile);
         }
-
-
     }
 }

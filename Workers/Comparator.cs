@@ -36,7 +36,7 @@ namespace PasswordCrackerCentralized
             }
             return true;
         }
-        private IEnumerable<UserInfoClearText> CheckSingleWord(IEnumerable<UserInfo> userInfos, byte[] possiblePassword)
+        private bool CheckSingleWord(IEnumerable<UserInfo> userInfos, byte[] possiblePassword)
         {
             //string encryptedPasswordBase64 = System.Convert.ToBase64String(encryptedPassword);
 

@@ -2,23 +2,32 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using PasswordCrackerCentralized.util;
 
 namespace PasswordCrackerCentralized.Workers
 {
 
     public class Encryptor
     {
-        private BlockingCollection<List<string>> PossiblePassClear;
-        private BlockingCollection<Dictionary<string,string>> PossiblePassEncr;
+        private readonly HashAlgorithm hashAlgorithm;
+        private BlockingCollection<Dictionary<string,byte[]>> PossiblePassEncr;
+        
 
-        public Encryptor(BlockingCollection<List<string>> possiblePassClear, BlockingCollection<Dictionary<string, string>> possiblePassEncr)
+        public Encryptor(BlockingCollection<Dictionary<string, byte[]>> possiblePass)
         {
-            if (possiblePassClear == null) throw new ArgumentNullException("Clear passwords");
             if (PossiblePassEncr == null) throw new ArgumentNullException("Encrypted passwords");
-            PossiblePassClear = possiblePassClear;
-            PossiblePassEncr = possiblePassEncr;
+            PossiblePassEncr = possiblePass;
+            hashAlgorithm = new SHA1CryptoServiceProvider();
+        }
+
+        private byte[] encryptSingleElement(string possiblePass)
+        {
+            return hashAlgorithm.ComputeHash(
+                Array.ConvertAll(   possiblePass.ToCharArray(), 
+                                    PasswordFileHandler.GetConverter()));
         }
     }
 }
