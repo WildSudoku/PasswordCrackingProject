@@ -9,10 +9,11 @@ namespace PasswordCrackerCentralized.model
     /// This must be Base64 encoded (converted to a string) before written to the file 
     /// </summary>
     [Serializable]
-    class UserInfo
+    public class UserInfo
     {
         public String Username { get; set; }
         public String EntryptedPasswordBase64 { get; set; }
+        public String ClearPassword { get; set; }
         public byte[] EntryptedPassword { get; set; }
 
         public UserInfo(String username, String entryptedPasswordBase64)
@@ -28,6 +29,7 @@ namespace PasswordCrackerCentralized.model
             Username = username;
             EntryptedPasswordBase64 = entryptedPasswordBase64;
             EntryptedPassword = Convert.FromBase64String(entryptedPasswordBase64);
+            ClearPassword = null;
         }
 
         public override string ToString()

@@ -12,19 +12,24 @@ namespace PasswordCrackerCentralized
 
     public class Comparator
     {
-        private BlockingCollection<Dictionary<string, string>> possiblePassEncrypted;
-        private List<UserInfo> userAccounts;
- 
+        private BlockingCollection<Dictionary<string, byte[]>> possiblePassEncrypted;
+        private List<UserInfo> UserAccounts;
+
+        public Comparator(List<UserInfo> _UserAccounts, BlockingCollection<Dictionary<string, byte[]>> PossiblePass)
+        {
+            possiblePassEncrypted = PossiblePass;
+            UserAccounts = _UserAccounts;
+        }
         private static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
         {
-            //if (secondArray == null)
-            //{
-            //    throw new ArgumentNullException("firstArray");
-            //}
-            //if (secondArray == null)
-            //{
-            //    throw new ArgumentNullException("secondArray");
-            //}
+            if (secondArray == null)
+            {
+                throw new ArgumentNullException("firstArray");
+            }
+            if (secondArray == null)
+            {
+                throw new ArgumentNullException("secondArray");
+            }
             if (firstArray.Count != secondArray.Count)
             {
                 return false;
