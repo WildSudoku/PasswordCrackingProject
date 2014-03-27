@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PasswordCrackerCentralized.Workers
 {
 
-    class Encryptor
+    public class Encryptor
     {
         private BlockingCollection<List<string>> PossiblePassClear;
         private BlockingCollection<Dictionary<string,string>> PossiblePassEncr;

@@ -12,19 +12,28 @@ namespace PasswordCrackerCentralized
 {
 
 
-    class Cracker
+    public class Cracker
     {
-        private BlockingCollection<string> Dictionary;
+        private BlockingCollection<string> _Dictionary;
+
+        public BlockingCollection<string> Dictionary
+        {
+            get { return _Dictionary; }
+            set { _Dictionary = value; }
+        }
+    
         private BlockingCollection<UserInfo> UserAccounts;
         private BlockingCollection<Dictionary<string, string>> PossiblePasswords;
-        private long LoadedWords;
-        public Cracker()
+
+        public Cracker(string dictionaryFile, string passwordFile)
         {
-            Dictionary = new BlockingCollection<string>();
+            _dictionary = new BlockingCollection<string>();
             UserAccounts = new BlockingCollection<UserInfo>();
             PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
+            LoadDataFromFiles(dictionaryFile,passwordFile);
         }
-        private void ReadDictionary(string dictionaryFileName, string passwordsFileName)
+
+        private void LoadDataFromFiles(string dictionaryFileName, string passwordsFileName)
         {
             foreach (UserInfo user in PasswordFileHandler.ReadPasswordFile(passwordsFileName))
             {
@@ -35,8 +44,7 @@ namespace PasswordCrackerCentralized
                 {
                     while (!dictionary.EndOfStream)
                     {
-                        String dictionaryEntry = dictionary.ReadLine();
-                        Dictionary.Add(dictionaryEntry);
+                        this._dictionary.Add(dictionary.ReadLine());
                     }
                 }
         }

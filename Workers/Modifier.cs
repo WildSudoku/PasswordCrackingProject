@@ -8,7 +8,7 @@ using PasswordCrackerCentralized.model;
 
 namespace PasswordCrackerCentralized
 {
-    class Modifier
+    public class Modifier
     {
         private BlockingCollection<string> Dictionary;
 

@@ -10,7 +10,7 @@ using PasswordCrackerCentralized.util;
 namespace PasswordCrackerCentralized
 {
 
-    class Comparator
+    public class Comparator
     {
         private BlockingCollection<Dictionary<string, string>> possiblePassEncrypted;
         private List<UserInfo> userAccounts;
