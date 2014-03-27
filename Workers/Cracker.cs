@@ -27,7 +27,7 @@ namespace PasswordCrackerCentralized
 
         public Cracker(string dictionaryFile, string passwordFile)
         {
-            _dictionary = new BlockingCollection<string>();
+            _Dictionary = new BlockingCollection<string>();
             UserAccounts = new BlockingCollection<UserInfo>();
             PossiblePasswords = new BlockingCollection<Dictionary<string, string>>();
             LoadDataFromFiles(dictionaryFile,passwordFile);
@@ -44,11 +44,9 @@ namespace PasswordCrackerCentralized
                 {
                     while (!dictionary.EndOfStream)
                     {
-                        this._dictionary.Add(dictionary.ReadLine());
+                        Dictionary.Add(dictionary.ReadLine());
                     }
                 }
         }
-
-
     }
 }
