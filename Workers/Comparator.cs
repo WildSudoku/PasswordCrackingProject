@@ -20,42 +20,10 @@ namespace PasswordCrackerCentralized
             possiblePassEncrypted = PossiblePass;
             UserAccounts = _UserAccounts;
         }
-        private static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
-        {
-            if (secondArray == null)
-            {
-                throw new ArgumentNullException("firstArray");
-            }
-            if (secondArray == null)
-            {
-                throw new ArgumentNullException("secondArray");
-            }
-            if (firstArray.Count != secondArray.Count)
-            {
-                return false;
-            }
-            for (int i = 0; i < firstArray.Count; i++)
-            {
-                if (firstArray[i] != secondArray[i])
-                    return false;
-            }
-            return true;
-        }
-        private bool CheckSingleWord(IEnumerable<UserInfo> userInfos, byte[] possiblePassword)
-        {
-            //string encryptedPasswordBase64 = System.Convert.ToBase64String(encryptedPassword);
 
-            List<UserInfoClearText> results = new List<UserInfoClearText>();
-            foreach (UserInfo userInfo in userInfos)
-            {
-                if (CompareBytes(userInfo.EntryptedPassword, encryptedPassword))
-                {
-                    results.Add(new UserInfoClearText(userInfo.Username, possiblePassword));
-                    Console.WriteLine(userInfo.Username + " " + possiblePassword);
-                }
-            }
-            return results;
-            return null;
+        public void Start()
+        {
+
         }
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="util\DictionaryReader.cs" />
+    <Compile Include="util\PassChecker.cs" />
     <Compile Include="Workers\Comparator.cs" />
     <Compile Include="Workers\Cracker.cs" />
     <Compile Include="model\UserInfo.cs" />

@@ -31,5 +31,9 @@ namespace PasswordCrackerCentralized
             PasswordFileHandler.ReadPasswordFile(passwordFile);
             new DictionaryReader(_Dictionary,dictionaryFile);
         }
+
+        public void Start()
+        {
+        }
     }
 }
