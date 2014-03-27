@@ -15,7 +15,6 @@ namespace PasswordCrackerCentralized
     public class Cracker
     {
         private BlockingCollection<string> _Dictionary;
-
         public BlockingCollection<string> Dictionary
         {
             get { return _Dictionary; }
