@@ -9,7 +9,6 @@ namespace PasswordCrackerCentralized.util
     class PasswordFileHandler
     {
         private static readonly Converter<char, byte> Converter = CharToByte;
-
         /// <summary>
         /// With this method you can make you own password file
         /// </summary>
@@ -36,7 +35,6 @@ namespace PasswordCrackerCentralized.util
                 }
             }
         }
-
         /// <summary>
         /// Reads all the username + encrypted password from the password file
         /// </summary>

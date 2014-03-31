@@ -27,7 +27,6 @@ namespace PasswordCrackerCentralized
             while (Dictionary.IsCompleted)
             {
                 currentWord = Dictionary.Take();
-
             }
         }
     }
