@@ -46,6 +46,18 @@ namespace PasswordCrackerCentralized.util
             throw new NotImplementedException();
         }
 
+        public static void multipleFirstLetter(string word, int number,ref List<string> listOfWords )
+        {
+            /// this shouls take the word and multiple the first letter number times and put it to listOfWords
+            /// ex.: word=car number=3 then should return ccar, cccar
+            throw new NotImplementedException();
+        }
+        public static void capitaliseFirstLetters(string word, int number, ref List<string> listOfWords)
+        {
+            /// this shouls take the word and capitalise number to 1 interval of begginging characters
+            /// ex.: word=carousel number=3 the should make: CARousel, CArousel, Carousel
+            throw new NotImplementedException();
+        }
         public static string StartingCapital(string word)
         {
             if (word == null) throw new ArgumentNullException();
@@ -54,15 +66,6 @@ namespace PasswordCrackerCentralized.util
             firstLetter.ToUpper();
             return firstLetter + word.Substring(1, word.Length - 1);
         }
-
-        //public static string EndingCapital(string word)
-        //{
-        //    if (word == null) throw new ArgumentNullException();
-        //    if (word.Length == 0) throw new ArgumentOutOfRangeException();
-        //    string lastLetter = word.Substring(word.Length - 2, word.Length - 1);
-        //    lastLetter.ToUpper();
-        //    return word.Substring(0, word.Length - 2) + lastLetter;
-        //}
         public static void AddDigitsToBegin(string word, int numberOfDigits, ref List<string> listOfWords)
         {
             if (word == null) throw new ArgumentNullException("word");
