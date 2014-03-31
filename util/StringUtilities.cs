@@ -37,9 +37,12 @@ namespace PasswordCrackerCentralized.util
             if (levelOdDeepness == DeepnessLevel.Default)
             {
                 List<string> ListOfVariations = new List<string>();
+                ListOfVariations.Add(Word);
                 ListOfVariations.Add(StringUtilities.Capitalize(Word));
                 ListOfVariations.Add(StringUtilities.Reverse(Word));
                 ListOfVariations.Add(StringUtilities.StartingCapital(Word));
+                AddDigitsToBegin(Word,2,ref ListOfVariations);
+                AddDigitsToEnd(Word,2, ref ListOfVariations);
                 return ListOfVariations;
             }
             else

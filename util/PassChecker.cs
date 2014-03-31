@@ -9,7 +9,7 @@ namespace PasswordCrackerCentralized.util
 {
     class PassChecker
     {
-        private static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
+        public static bool CompareBytes(IList<byte> firstArray, IList<byte> secondArray)
         {
             if (secondArray == null)
             {

@@ -23,7 +23,18 @@ namespace PasswordCrackerCentralized
 
         public void Start()
         {
-
+            while (!possiblePassEncrypted.IsCompleted)
+            {
+                Dictionary<string, byte[]> passwordsEncr = possiblePassEncrypted.Take();
+                foreach (KeyValuePair<string, byte[]> keyValuePair in passwordsEncr)
+                {
+                    foreach (UserInfo userAccount in UserAccounts)
+                    {
+                        if(PassChecker.CompareBytes(userAccount.EntryptedPassword,keyValuePair.Value))
+                        userAccount.ClearPassword = keyValuePair.Key;
+                    }
+                }
+            }
         }
     }
 }
