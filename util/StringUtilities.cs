@@ -14,7 +14,7 @@ namespace PasswordCrackerCentralized.util
         -All capital letters - 1
         -Any arbitrary number of capital letter of the beginning of the word - 2
         -Adding 1 or 2 digits to the beginning of the word - 100
-        -Adding 1 or 2 digits to the end of the word - 10
+        -Adding 1 or 2 digits to the end of the word - 100
         -any combination of the above.
 
          
@@ -40,7 +40,7 @@ namespace PasswordCrackerCentralized.util
                 ListOfVariations.Add(StringUtilities.Capitalize(Word));
                 ListOfVariations.Add(StringUtilities.Reverse(Word));
                 ListOfVariations.Add(StringUtilities.StartingCapital(Word));
-                
+                return ListOfVariations;
             }
             else
             throw new NotImplementedException();
@@ -65,6 +65,8 @@ namespace PasswordCrackerCentralized.util
         //}
         public static void AddDigitsToBegin(string word, int numberOfDigits, ref List<string> listOfWords)
         {
+            if (word == null) throw new ArgumentNullException("word");
+            if (listOfWords == null) throw new ArgumentNullException("listOfWords");
             for (int i = 1; i <=numberOfDigits; i++)
             {
                 for (int j = 0; j < Math.Pow(10,numberOfDigits); j++)
@@ -75,6 +77,8 @@ namespace PasswordCrackerCentralized.util
         }
         public static void AddDigitsToEnd(string word, int numberOfDigits, ref List<string> listOfWords)
         {
+            if (word == null) throw new ArgumentNullException("word");
+            if (listOfWords == null) throw new ArgumentNullException("listOfWords");
             for (int i = 1; i <= numberOfDigits; i++)
             {
                 for (int j = 0; j < Math.Pow(10, numberOfDigits); j++)
