@@ -15,7 +15,7 @@ namespace PasswordCrackerCentralized.util
         /// <param name="filename">Name of password file</param>
         /// <param name="usernames">List of usernames</param>
         /// <param name="passwords">List of passwords in clear text</param>
-        /// <exception cref="ArgumentException">if usernames and passwords have different lengths</exception>
+        /// <exception cref="ArgumentException">if usernames and passwords have different lengths.</exception>
         public static void WritePasswordFile(String filename, String[] usernames, String[] passwords)
         {
             HashAlgorithm messageDigest = new SHA1CryptoServiceProvider();
@@ -63,8 +63,7 @@ namespace PasswordCrackerCentralized.util
         }
 
         /// <summary>
-        /// Converting a char to a byte can be done in many ways.
-        /// This is one way ...
+        /// Converting a char to a byte.
         /// </summary>
         /// <param name="ch"></param>
         /// <returns></returns>

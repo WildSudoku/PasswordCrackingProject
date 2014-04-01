@@ -9,6 +9,9 @@ using PasswordCrackerCentralized.util;
 
 namespace PasswordCrackerCentralized.Workers
 {
+    /// <summary>
+    /// Alle possible variations are encrypted here.
+    /// </summary>
 
     public class Encryptor
     {

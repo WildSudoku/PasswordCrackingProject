@@ -19,6 +19,17 @@ namespace PasswordCrackerCentralized.util
 
          
          */
+        /// <summary>
+        /// Class contains static methods that creates string variations.
+        /// </summary>
+
+        /// <summary>
+        /// Define seven levels. 
+        /// </summary>
+        /// <param name="word"></param>
+        /// <param name="number"></param>
+        /// <param name="numberOfDigits"></param>
+        /// <param name="listOfWords"></param>
 
         public enum DeepnessLevel
         {
@@ -51,14 +62,17 @@ namespace PasswordCrackerCentralized.util
 
         public static void multipleFirstLetter(string word, int number,List<string> listOfWords )
         {
-            /// this shouls take the word and multiple the first letter number times and put it to listOfWords
-            /// ex.: word=car number=3 then should return ccar, cccar
+            /// <summary>Takes the word and multiple first letter several times and add it on the listOfWords.</summary>
+            ///<returns></returns>
+
+            ///  <example> word=car number=3, return ccar, cccar</example>
             throw new NotImplementedException();
         }
         public static void capitaliseFirstLetters(string word, int number, List<string> listOfWords)
         {
-            /// this shouls take the word and capitalise number to 1 interval of begginging characters
-            /// ex.: word=carousel number=3 the should make: CARousel, CArousel, Carousel
+            /// <summary>Takes the word and using the number capitalise beginging characters.</summary>
+            ///<returns></returns>
+            /// <example> word=carousel number=3 the should make: CARousel, CArousel, Carousel</example>
             throw new NotImplementedException();
         }
         public static string StartingCapital(string word)
