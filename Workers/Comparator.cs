@@ -41,7 +41,6 @@ namespace PasswordCrackerCentralized
                 }
                 catch (InvalidOperationException ex)
                 {
-
                     break;
                 }
             }
