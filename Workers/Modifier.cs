@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 using PasswordCrackerCentralized.model;
 using PasswordCrackerCentralized.util;
 
@@ -17,7 +18,7 @@ namespace PasswordCrackerCentralized
     {
         private BlockingCollection<string> Dictionary;
         private BlockingCollection<List<string>> PossiblePasswords;
-
+        public static readonly ILog Logger = LogManager.GetLogger(typeof(Program));
         public Modifier(BlockingCollection<string> _dictionary, BlockingCollection<List<string>> _PossiblePasswords)
         {
             if (_dictionary == null) throw new ArgumentNullException("Dictionary");
@@ -38,7 +39,9 @@ namespace PasswordCrackerCentralized
             {
                 try
                 {
-                    PossiblePasswords.Add(StringUtilities.MakeVariations(Dictionary.Take(),
+                    currentWord = Dictionary.Take();
+                    Logger.Info("Modified:"+currentWord);
+                    PossiblePasswords.Add(StringUtilities.MakeVariations(currentWord,
                         StringUtilities.DeepnessLevel.Default)
                         );
                 }

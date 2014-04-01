@@ -48,7 +48,9 @@ namespace PasswordCrackerCentralized.util
             if (levelOdDeepness == DeepnessLevel.Default)
             {
                 List<string> ListOfVariations = new List<string>();
+                string currentWord = Word.ToLower();
                 ListOfVariations.Add(Word);
+
                 ListOfVariations.Add(StringUtilities.Capitalize(Word));
                 ListOfVariations.Add(StringUtilities.Reverse(Word));
                 ListOfVariations.Add(StringUtilities.StartingCapital(Word));

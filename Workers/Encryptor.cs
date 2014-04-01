@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using log4net;
 using PasswordCrackerCentralized.util;
 
 namespace PasswordCrackerCentralized.Workers
@@ -17,8 +18,8 @@ namespace PasswordCrackerCentralized.Workers
     {
         private readonly HashAlgorithm hashAlgorithm;
         private BlockingCollection<Dictionary<string,byte[]>> PossiblePassEncr;
-        private BlockingCollection<List<string>> PossiblePassClean; 
-
+        private BlockingCollection<List<string>> PossiblePassClean;
+        public static readonly ILog Logger = LogManager.GetLogger(typeof(Program));
         public Encryptor(BlockingCollection<List<string>> _PossiblePassClean,BlockingCollection<Dictionary<string, byte[]>> _PossiblePassEncr)
         {
             if (_PossiblePassEncr == null) throw new ArgumentNullException("Encrypted passwords");
@@ -34,11 +35,12 @@ namespace PasswordCrackerCentralized.Workers
             {
                 Dictionary<string, byte[]> encrypted = new Dictionary<string, byte[]>();
                 List<string> current = PossiblePassClean.Take();
-                
+                Logger.Info("Encrypting List beginning with:"+current.First());
                 foreach (var element in current)
                 {
                     try
                     {
+                        
                         encrypted.Add(element, encryptSingleElement(element));
                     }
                     catch (ArgumentException ex)

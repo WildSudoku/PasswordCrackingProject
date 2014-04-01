@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using log4net.Config;
 using PasswordCrackerCentralized.model;
 using PasswordCrackerCentralized.util;
 using PasswordCrackerCentralized.Workers;
@@ -34,6 +35,7 @@ namespace PasswordCrackerCentralized
             UserAccounts = PasswordFileHandler.ReadPasswordFile(passwordFile);
             new DictionaryReader(_Dictionary,dictionaryFile);
             Dictionary.CompleteAdding();
+            BasicConfigurator.Configure();
         }
 
         public void Start()
