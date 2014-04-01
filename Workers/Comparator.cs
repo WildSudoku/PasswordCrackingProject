@@ -37,7 +37,7 @@ namespace PasswordCrackerCentralized
                         if(PassChecker.CompareBytes(userAccount.EntryptedPassword,keyValuePair.Value))
                         userAccount.ClearPassword = keyValuePair.Key;
                     }
-                }
+                }  
                 }
                 catch (InvalidOperationException ex)
                 {
