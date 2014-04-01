@@ -9,7 +9,10 @@ using PasswordCrackerCentralized.util;
 
 namespace PasswordCrackerCentralized
 {
-
+    /// <summary>
+    /// Compare different variations, made by modifier, with possiblePassword.
+    /// </summary>
+    ///<param name="possiblePassEncrypted">List of (encrypted password) pairs from the password file.</param>
     public class Comparator
     {
         private BlockingCollection<Dictionary<string, byte[]>> possiblePassEncrypted;

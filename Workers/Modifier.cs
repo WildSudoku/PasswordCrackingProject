@@ -9,6 +9,10 @@ using PasswordCrackerCentralized.util;
 
 namespace PasswordCrackerCentralized
 {
+    /// <summary>
+    /// Modifier responsible for creating different variations of the word.
+    /// </summary>
+    ///<param name="possiblePasswords">List of (encrypted password) pairs from the password file.</param>
     public class Modifier
     {
         private BlockingCollection<string> Dictionary;
@@ -21,6 +25,11 @@ namespace PasswordCrackerCentralized
             Dictionary = _dictionary;
             PossiblePasswords = _PossiblePasswords;
         }
+        /// <summary>
+        /// Take every word from dictionary.
+        /// </summary>
+        /// <param name="currentWord"></param>
+        ///  <returns>A list of words variations.</returns>
 
         public void Start()
         {

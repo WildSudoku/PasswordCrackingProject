@@ -3,11 +3,11 @@
 namespace PasswordCrackerCentralized.model
 {
     /// <summary>
-    /// username + encrypted password.
     /// In the password file we store username + encrypted password.
-    /// The encrypted password is a byte array (cannot be written to the password file)
-    /// This must be Base64 encoded (converted to a string) before written to the file 
+    /// The encrypted password is a byte array (can´t be written to the password file).
+    /// This must be Base64 encoded (converted to a string) before written to the file.
     /// </summary>
+    ///<returns>Username + encrypted password</returns>
     [Serializable]
     public class UserInfo
     {
