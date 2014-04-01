@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PasswordCrackerCentralized.util
 {
-    internal class StringUtilities
+    public class StringUtilities
     {
         /**
          * This CLASS is gonna be very big one !
@@ -41,21 +41,21 @@ namespace PasswordCrackerCentralized.util
                 ListOfVariations.Add(StringUtilities.Capitalize(Word));
                 ListOfVariations.Add(StringUtilities.Reverse(Word));
                 ListOfVariations.Add(StringUtilities.StartingCapital(Word));
-                AddDigitsToBegin(Word,2,ref ListOfVariations);
-                AddDigitsToEnd(Word,2, ref ListOfVariations);
+                AddDigitsToBegin(Word,2,ListOfVariations);
+                AddDigitsToEnd(Word,2, ListOfVariations);
                 return ListOfVariations;
             }
             else
             throw new NotImplementedException();
         }
 
-        public static void multipleFirstLetter(string word, int number,ref List<string> listOfWords )
+        public static void multipleFirstLetter(string word, int number,List<string> listOfWords )
         {
             /// this shouls take the word and multiple the first letter number times and put it to listOfWords
             /// ex.: word=car number=3 then should return ccar, cccar
             throw new NotImplementedException();
         }
-        public static void capitaliseFirstLetters(string word, int number, ref List<string> listOfWords)
+        public static void capitaliseFirstLetters(string word, int number, List<string> listOfWords)
         {
             /// this shouls take the word and capitalise number to 1 interval of begginging characters
             /// ex.: word=carousel number=3 the should make: CARousel, CArousel, Carousel
@@ -69,27 +69,75 @@ namespace PasswordCrackerCentralized.util
             firstLetter.ToUpper();
             return firstLetter + word.Substring(1, word.Length - 1);
         }
-        public static void AddDigitsToBegin(string word, int numberOfDigits, ref List<string> listOfWords)
+        public static void AddDigitsToBegin(string word, int numberOfDigits, List<string> listOfWords)
         {
             if (word == null) throw new ArgumentNullException("word");
             if (listOfWords == null) throw new ArgumentNullException("listOfWords");
-            for (int i = 1; i <=numberOfDigits; i++)
+            if (numberOfDigits < 1 || numberOfDigits >3) throw new ArgumentOutOfRangeException("numberOfDigits could be only 1,2 or 3");
+            if (numberOfDigits == 1)
             {
-                for (int j = 0; j < Math.Pow(10,numberOfDigits); j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    listOfWords.Add(word + i);
+                    listOfWords.Add(i+word);
+                }
+            }
+            else if (numberOfDigits == 2)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        listOfWords.Add(i+""+j+word);
+                    }
+                }
+            }
+            else if (numberOfDigits == 3)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        for (int k = 0; k < 10; k++)
+                        {
+                            listOfWords.Add(i+""+j+""+k+word);
+                        }
+                    }
                 }
             }
         }
-        public static void AddDigitsToEnd(string word, int numberOfDigits, ref List<string> listOfWords)
+        public static void AddDigitsToEnd(string word, int numberOfDigits, List<string> listOfWords)
         {
             if (word == null) throw new ArgumentNullException("word");
             if (listOfWords == null) throw new ArgumentNullException("listOfWords");
-            for (int i = 1; i <= numberOfDigits; i++)
+            if (numberOfDigits < 1 || numberOfDigits > 3) throw new ArgumentOutOfRangeException("numberOfDigits could be only 1,2 or 3");
+            if (numberOfDigits == 1)
             {
-                for (int j = 0; j < Math.Pow(10, numberOfDigits); j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    listOfWords.Add(i + word);
+                    listOfWords.Add(word+i);
+                }
+            }
+            else if (numberOfDigits == 2)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        listOfWords.Add(word+i + "" + j);
+                    }
+                }
+            }
+            else if (numberOfDigits == 3)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        for (int k = 0; k < 10; k++)
+                        {
+                            listOfWords.Add(word+i + "" + j + "" + k);
+                        }
+                    }
                 }
             }
         }
