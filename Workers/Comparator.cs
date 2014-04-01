@@ -25,7 +25,11 @@ namespace PasswordCrackerCentralized
         {
             while (!possiblePassEncrypted.IsCompleted)
             {
+                try
+                {
                 Dictionary<string, byte[]> passwordsEncr = possiblePassEncrypted.Take();
+                
+
                 foreach (KeyValuePair<string, byte[]> keyValuePair in passwordsEncr)
                 {
                     foreach (UserInfo userAccount in UserAccounts)
@@ -33,6 +37,12 @@ namespace PasswordCrackerCentralized
                         if(PassChecker.CompareBytes(userAccount.EntryptedPassword,keyValuePair.Value))
                         userAccount.ClearPassword = keyValuePair.Key;
                     }
+                }
+                }
+                catch (InvalidOperationException ex)
+                {
+
+                    break;
                 }
             }
         }

@@ -38,6 +38,7 @@ namespace PasswordCrackerCentralized
 
         public void Start()
         {
+            Console.WriteLine("Starting. ..."+DateTime.Now);
             Modifier modifier1 = new Modifier(Dictionary,PossibleClearPasswords);
             Modifier modifier2 = new Modifier(Dictionary,PossibleClearPasswords);
 
@@ -53,8 +54,9 @@ namespace PasswordCrackerCentralized
             Task.Factory.StartNew(() => encryptor1.Start());
             Task.Factory.StartNew(() => encryptor2.Start());
             Task.Factory.StartNew(() => encryptor3.Start());
-            Task.Factory.StartNew(() => comparator1.Start());
-            Task.Factory.StartNew(() => comparator2.Start());
+
+            Parallel.Invoke(() => comparator1.Start(), () => comparator2.Start());
+            Console.WriteLine("Finished. ..." + DateTime.Now);
             foreach (UserInfo userAccount in UserAccounts)
             {
                 Console.WriteLine(userAccount.Username + " " + userAccount.ClearPassword);

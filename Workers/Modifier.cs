@@ -27,9 +27,16 @@ namespace PasswordCrackerCentralized
             string currentWord;
             while (!Dictionary.IsCompleted)
             {
-                PossiblePasswords.Add(  StringUtilities.MakeVariations( Dictionary.Take(),
-                                                                        StringUtilities.DeepnessLevel.Default)
-                                        );
+                try
+                {
+                    PossiblePasswords.Add(StringUtilities.MakeVariations(Dictionary.Take(),
+                        StringUtilities.DeepnessLevel.Default)
+                        );
+                }
+                catch (InvalidOperationException ex)
+                {
+                    //completed !
+                }
             }
             PossiblePasswords.CompleteAdding();
         }

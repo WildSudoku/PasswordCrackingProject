@@ -31,11 +31,26 @@ namespace PasswordCrackerCentralized.Workers
             {
                 Dictionary<string, byte[]> encrypted = new Dictionary<string, byte[]>();
                 List<string> current = PossiblePassClean.Take();
+                
                 foreach (var element in current)
                 {
-                    encrypted.Add(element,encryptSingleElement(element));
+                    try
+                    {
+                        encrypted.Add(element, encryptSingleElement(element));
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        //already added
+                    }
                 }
-                PossiblePassEncr.Add(encrypted);
+                try
+                {
+                    PossiblePassEncr.Add(encrypted);
+                }
+                catch (Exception ex) { 
+                    //completed
+                }
+
             }
             PossiblePassEncr.CompleteAdding();
         }
