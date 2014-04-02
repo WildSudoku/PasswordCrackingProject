@@ -56,6 +56,9 @@ namespace PasswordCrackerCentralized.util
                 ListOfVariations.Add(StringUtilities.Reverse(currentWord));
                 AddDigitsToBegin(currentWord, 2, ListOfVariations);
                 AddDigitsToEnd(currentWord, 2, ListOfVariations);
+                AddDigitsToEnd(currentWord, 1, ListOfVariations);
+                AddDigitsToEnd(currentWord, 1, ListOfVariations);
+                //AddDigitsToEnd(StringUtilities.Capitalize(currentWord),2,ListOfVariations);
                 SurroundWithDigits(currentWord, ListOfVariations, 1);
                 return ListOfVariations;
             }
