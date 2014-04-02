@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net.Util;
 
 namespace PasswordCrackerCentralized.util
 {
@@ -49,13 +50,13 @@ namespace PasswordCrackerCentralized.util
             {
                 List<string> ListOfVariations = new List<string>();
                 string currentWord = Word.ToLower();
-                ListOfVariations.Add(Word);
-
-                ListOfVariations.Add(StringUtilities.Capitalize(Word));
-                ListOfVariations.Add(StringUtilities.Reverse(Word));
-                ListOfVariations.Add(StringUtilities.StartingCapital(Word));
-                AddDigitsToBegin(Word,2,ListOfVariations);
-                AddDigitsToEnd(Word,2, ListOfVariations);
+                ListOfVariations.Add(currentWord);
+                ListOfVariations.Add(currentWord.ToUpper());
+                ListOfVariations.Add(StringUtilities.Capitalize(currentWord));
+                ListOfVariations.Add(StringUtilities.Reverse(currentWord));
+                AddDigitsToBegin(currentWord, 2, ListOfVariations);
+                AddDigitsToEnd(currentWord, 2, ListOfVariations);
+                SurroundWithDigits(currentWord, ListOfVariations, 1);
                 return ListOfVariations;
             }
             else
@@ -90,6 +91,7 @@ namespace PasswordCrackerCentralized.util
             if (word == null) throw new ArgumentNullException("word");
             if (listOfWords == null) throw new ArgumentNullException("listOfWords");
             if (numberOfDigits < 1 || numberOfDigits >3) throw new ArgumentOutOfRangeException("numberOfDigits could be only 1,2 or 3");
+            StringBuilder genWord;
             if (numberOfDigits == 1)
             {
                 for (int i = 0; i < 10; i++)
@@ -152,6 +154,40 @@ namespace PasswordCrackerCentralized.util
                         for (int k = 0; k < 10; k++)
                         {
                             listOfWords.Add(word+i + "" + j + "" + k);
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void SurroundWithDigits(string word,ICollection<string> list,  int number)
+        {
+            ///number == 2 is gonna to take 100 times more time :D 
+            if (word == null) throw new ArgumentNullException("word");
+            if (list == null) throw new ArgumentNullException("list");
+            if (number < 1 || number > 2)  throw new ArgumentOutOfRangeException("number");
+            if (number == 1)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        list.Add(i+word+j);
+                    }
+                }
+            }
+            else if (number == 2)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        for (int k = 0; k < 10; k++)
+                        {
+                            for (int l = 0; l < 10; l++)
+                            {
+                                list.Add(i+""+k + word + j+""+l);
+                            }
                         }
                     }
                 }

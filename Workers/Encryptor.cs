@@ -40,7 +40,6 @@ namespace PasswordCrackerCentralized.Workers
                 {
                     try
                     {
-                        
                         encrypted.Add(element, encryptSingleElement(element));
                     }
                     catch (ArgumentException ex)

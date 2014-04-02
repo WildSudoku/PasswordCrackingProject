@@ -8,7 +8,7 @@ namespace PasswordCrackerCentralized
     {
         static void Main()
         {
-            Cracker cracker = new Cracker("webster-dictionary-reduced.txt","passwords.txt");
+            Cracker cracker = new Cracker("webster-dictionary.txt","passwords.txt");
             cracker.Start();
             Console.ReadKey();
         }

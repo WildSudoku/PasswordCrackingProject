@@ -42,13 +42,12 @@ namespace PasswordCrackerCentralized
                         if (PassChecker.CompareBytes(userAccount.EntryptedPassword, keyValuePair.Value))
                         {
                             userAccount.ClearPassword = keyValuePair.Key;
-                            Logger.FatalFormat("Cracked !:" + keyValuePair.Key);
+                            Logger.FatalFormat("\n\nCracked !:" + keyValuePair.Key+"\n\n");
                         }
                     }
-                }  
-
                 }
-                catch (ArgumentException ex)
+                }
+                catch (InvalidOperationException ex)
                 {
                     break;
                 }
