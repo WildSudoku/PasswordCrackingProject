@@ -9,22 +9,25 @@ using PasswordCrackerCentralized.model;
 
 namespace PasswordCrackerCentralized.util
 {
+    /// <summary>
+    /// Read from dictionary file. 
+    /// </summary>
     public class DictionaryReader
     {
-        public DictionaryReader(BlockingCollection<string> Dictionary,string dictionaryFileName)
+        public DictionaryReader(BlockingCollection<string> Dictionary, string dictionaryFileName)
         {
             //foreach (UserInfo user in PasswordFileHandler.ReadPasswordFile(passwordsFileName))
             //{
             //    UserAccounts.Add(user);
             //}
             using (FileStream fs = new FileStream(dictionaryFileName, FileMode.Open, FileAccess.Read))
-                using (StreamReader dictionary = new StreamReader(fs))
+            using (StreamReader dictionary = new StreamReader(fs))
+            {
+                while (!dictionary.EndOfStream)
                 {
-                    while (!dictionary.EndOfStream)
-                    {
-                        Dictionary.Add(dictionary.ReadLine());
-                    }
+                    Dictionary.Add(dictionary.ReadLine());
                 }
+            }
         }
     }
 }

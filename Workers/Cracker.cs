@@ -48,15 +48,15 @@ namespace PasswordCrackerCentralized
             Modifier modifier2 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier3 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier4 = new Modifier(Dictionary, PossibleClearPasswords);
-            Modifier modifier5= new Modifier(Dictionary, PossibleClearPasswords);
+            Modifier modifier5 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier6 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier7 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier8 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier9 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier10 = new Modifier(Dictionary, PossibleClearPasswords);
-            Modifier modifier11= new Modifier(Dictionary, PossibleClearPasswords);
+            Modifier modifier11 = new Modifier(Dictionary, PossibleClearPasswords);
             Modifier modifier12 = new Modifier(Dictionary, PossibleClearPasswords);
-         //   Modifier modifier5 = new Modifier(Dictionary, PossibleClearPasswords);
+        
 
             Encryptor encryptor1 = new Encryptor(PossibleClearPasswords,PossiblePasswords);
             Encryptor encryptor2 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
@@ -68,10 +68,9 @@ namespace PasswordCrackerCentralized
             Encryptor encryptor8 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
             Encryptor encryptor9 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
             Encryptor encryptor10 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
-            Encryptor encryptor11= new Encryptor(PossibleClearPasswords, PossiblePasswords);
-            Encryptor encryptor12= new Encryptor(PossibleClearPasswords, PossiblePasswords);
-          //  Encryptor encryptor5 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
-
+            Encryptor encryptor11 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
+            Encryptor encryptor12 = new Encryptor(PossibleClearPasswords, PossiblePasswords);
+         
             Comparator comparator1 = new Comparator(UserAccounts, PossiblePasswords);
             Comparator comparator2 = new Comparator(UserAccounts, PossiblePasswords);
             Comparator comparator3 = new Comparator(UserAccounts, PossiblePasswords);
@@ -82,10 +81,9 @@ namespace PasswordCrackerCentralized
             Comparator comparator8 = new Comparator(UserAccounts, PossiblePasswords);
             Comparator comparator9 = new Comparator(UserAccounts, PossiblePasswords);
             Comparator comparator10 = new Comparator(UserAccounts, PossiblePasswords);
-            Comparator comparator11= new Comparator(UserAccounts, PossiblePasswords);
-            Comparator comparator12= new Comparator(UserAccounts, PossiblePasswords);
-           // Comparator comparator5 = new Comparator(UserAccounts, PossiblePasswords);
-
+            Comparator comparator11 = new Comparator(UserAccounts, PossiblePasswords);
+            Comparator comparator12 = new Comparator(UserAccounts, PossiblePasswords);
+       
             Task.Factory.StartNew(() => modifier1.Start());
             Task.Factory.StartNew(() => modifier2.Start());
             Task.Factory.StartNew(() => modifier3.Start());
@@ -98,8 +96,7 @@ namespace PasswordCrackerCentralized
             Task.Factory.StartNew(() => modifier10.Start());
             Task.Factory.StartNew(() => modifier11.Start());
             Task.Factory.StartNew(() => modifier12.Start());
-          //  Task.Factory.StartNew(() => modifier5.Start());
-
+        
             Task.Factory.StartNew(() => encryptor1.Start());
             Task.Factory.StartNew(() => encryptor2.Start());
             Task.Factory.StartNew(() => encryptor3.Start());
@@ -112,15 +109,13 @@ namespace PasswordCrackerCentralized
             Task.Factory.StartNew(() => encryptor10.Start());
             Task.Factory.StartNew(() => encryptor11.Start());
             Task.Factory.StartNew(() => encryptor12.Start());
-            //Task.Factory.StartNew(() => encryptor5.Start());
 
 
             Parallel.Invoke(() => comparator1.Start(), () => comparator2.Start(),
-                            () => comparator3.Start(), () => comparator4.Start(),() => comparator5.Start(),
+                            () => comparator3.Start(), () => comparator4.Start(), () => comparator5.Start(),
                             () => comparator6.Start(), () => comparator7.Start(), () => comparator8.Start(), () => comparator9.Start(),
                             () => comparator10.Start(), () => comparator11.Start(), () => comparator12.Start());
-            //Parallel.Invoke(() => comparator1.Start());
-
+           
             
             Console.WriteLine("Finished. ..." + DateTime.Now);
             foreach (UserInfo userAccount in UserAccounts)
