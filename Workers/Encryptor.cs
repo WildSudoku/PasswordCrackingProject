@@ -27,9 +27,10 @@ namespace PasswordCrackerCentralized.Workers
             PossiblePassClean = _PossiblePassClean;
             PossiblePassEncr = _PossiblePassEncr;
             hashAlgorithm = new SHA1CryptoServiceProvider();
+            Start();
         }
 
-        public void Start()
+        private void Start()
         {
             while (!PossiblePassClean.IsCompleted)
             {

@@ -24,9 +24,10 @@ namespace PasswordCrackerCentralized
         {
             possiblePassEncrypted = PossiblePass;
             UserAccounts = _UserAccounts;
+            Start();
         }
 
-        public void Start()
+        private void Start()
         {
             while (!possiblePassEncrypted.IsCompleted)
             {

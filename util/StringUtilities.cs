@@ -32,22 +32,8 @@ namespace PasswordCrackerCentralized.util
         /// <param name="numberOfDigits"></param>
         /// <param name="listOfWords"></param>
 
-        public enum DeepnessLevel
+        public static List<string> MakeVariations(string Word)
         {
-            A,
-            B,
-            C,
-            D,
-            E,
-            F,
-            G,
-            Default
-        };
-
-        public static List<string> MakeVariations(string Word, DeepnessLevel levelOdDeepness)
-        {
-            if (levelOdDeepness == DeepnessLevel.Default)
-            {
                 List<string> ListOfVariations = new List<string>();
                 string currentWord = Word.ToLower();
                 ListOfVariations.Add(currentWord);
@@ -58,28 +44,8 @@ namespace PasswordCrackerCentralized.util
                 AddDigitsToEnd(currentWord, 2, ListOfVariations);
                 AddDigitsToEnd(currentWord, 1, ListOfVariations);
                 AddDigitsToEnd(currentWord, 1, ListOfVariations);
-                //AddDigitsToEnd(StringUtilities.Capitalize(currentWord),2,ListOfVariations);
                 SurroundWithDigits(currentWord, ListOfVariations, 1);
                 return ListOfVariations;
-            }
-            else
-            throw new NotImplementedException();
-        }
-
-        public static void multipleFirstLetter(string word, int number,List<string> listOfWords )
-        {
-            /// <summary>Takes the word and multiple first letter several times and add it on the listOfWords.</summary>
-            ///<returns></returns>
-
-            ///  <example> word=car number=3, return ccar, cccar</example>
-            throw new NotImplementedException();
-        }
-        public static void capitaliseFirstLetters(string word, int number, List<string> listOfWords)
-        {
-            /// <summary>Takes the word and using the number capitalise beginging characters.</summary>
-            ///<returns></returns>
-            /// <example> word=carousel number=3 the should make: CARousel, CArousel, Carousel</example>
-            throw new NotImplementedException();
         }
         public static string StartingCapital(string word)
         {

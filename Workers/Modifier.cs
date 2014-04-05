@@ -25,6 +25,7 @@ namespace PasswordCrackerCentralized
             if (_PossiblePasswords == null) throw new ArgumentNullException("Passwords");
             Dictionary = _dictionary;
             PossiblePasswords = _PossiblePasswords;
+            Start();
         }
         /// <summary>
         /// Take every word from dictionary.
@@ -32,7 +33,7 @@ namespace PasswordCrackerCentralized
         /// <param name="currentWord"></param>
         ///  <returns>A list of words variations.</returns>
 
-        public void Start()
+        private void Start()
         {
             string currentWord;
             while (!Dictionary.IsCompleted)
@@ -41,9 +42,7 @@ namespace PasswordCrackerCentralized
                 {
                     currentWord = Dictionary.Take();
                     Logger.Info("Modified:"+currentWord);
-                    PossiblePasswords.Add(StringUtilities.MakeVariations(currentWord,
-                        StringUtilities.DeepnessLevel.Default)
-                        );
+                    PossiblePasswords.Add(StringUtilities.MakeVariations(currentWord));
                 }
                 catch (InvalidOperationException ex)
                 {
